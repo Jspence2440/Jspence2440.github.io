@@ -2,48 +2,97 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quick Links</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
+      background-color: #333;
+      color: #fff;
     }
     
     h1 {
       text-align: center;
     }
     
-    ul {
-      list-style-type: none;
-      padding: 0;
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
     
-    li {
+    .section {
+      background-color: #444;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
       margin-bottom: 10px;
     }
     
-    a {
+    .link {
       display: block;
       padding: 10px;
-      background-color: #f2f2f2;
+      background-color: #555;
       text-decoration: none;
-      color: #333;
+      color: #fff;
       border-radius: 5px;
+      margin-bottom: 10px;
     }
     
-    a:hover {
-      background-color: #ddd;
+    .link:hover {
+      background-color: #777;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <h1>Quick Links</h1>
-  <ul>
-    <li><a href="https://openai.com/blog/chatgpt">ChatGPT</a></li>
-    <li><a href="https://google.com">Google</a></li>
-    <li><a href="https://github.com">GitHub</a></li>
-    <!-- Add more links here -->
-  </ul>
+  
+  <div class="container">
+    <div class="section">
+      <h2 class="section-title">Tools</h2>
+      <ul>
+        <li><a class="link" href="https://openai.com/blog/chatgpt">ChatGPT</a></li>
+        <li><a class="link" href="https://www.wikipedia.org/">Wikipedia</a></li>
+      </ul>
+    </div>
+  
+    <div class="section">
+      <h2 class="section-title">Gaming</h2>
+      <ul>
+        <li><a class="link" href="https://pokemonshowdown.com/">Pokémon Showdown</a></li>
+        <li><a class="link" href="https://google2.com">Google 2</a></li>
+      </ul>
+    </div>
+  
+    <div class="section">
+      <h2 class="section-title">Bookmarks</h2>
+      <ul>
+        <li><a class="link" href="https://github.com/">GitHub 1</a></li>
+        <li><a class="link" href="https://www.apple.com/">Apple</a></li>
+      </ul>
+    </div>
+  
+    <div class="section">
+      <h2 class="section-title">Section 4</h2>
+      <ul>
+        <li><a class="link" href="https://example4.com">Example 4</a></li>
+        <li><a class="link" href="https://example5.com">Example 5</a></li>
+      </ul>
+    </div>
+  </div>
+  
 </body>
 </html>
