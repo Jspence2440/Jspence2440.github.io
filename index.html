@@ -1,98 +1,191 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quick Links</title>
+  <title>ToolBox</title>
   <style>
     body {
+      background-color: #1f1f1f;
+      color: #d9d9d9;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
-      background-color: #333;
-      color: #fff;
     }
     
     h1 {
+      color: #90ee90;
+      margin-bottom: 20px;
       text-align: center;
     }
     
-    .container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    
     .section {
-      background-color: #444;
-      border-radius: 5px;
-      padding: 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      margin-bottom: 40px;
+      text-align: center;
     }
     
-    .section-title {
+    .section h2 {
       font-size: 20px;
-      font-weight: bold;
       margin-bottom: 10px;
+      color: #cccccc;
     }
     
-    .link {
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .links a {
       display: block;
-      padding: 10px;
-      background-color: #555;
+      color: #4287f5;
       text-decoration: none;
-      color: #fff;
-      border-radius: 5px;
+      margin-right: 10px;
       margin-bottom: 10px;
+      padding: 10px;
+      background-color: #222;
+      border: 1px solid #4287f5;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
     }
     
-    .link:hover {
-      background-color: #777;
+    .links a:hover {
+      background-color: #4287f5;
     }
     
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
+    .message-box {
+      margin: 0 auto;
+      width: 50%;
+    }
+    
+    .message-box h2 {
+      font-size: 24px;
+      text-align: center;
+      color: #cccccc;
+    }
+    
+    .message-box textarea {
+      width: 100%;
+      height: 100px;
+      resize: none;
+      margin-bottom: 10px;
+      background-color: #363636;
+      color: #d9d9d9;
+      border: 1px solid #4287f5;
+      padding: 10px;
+    }
+    
+    .message-box button {
+      background-color: #4287f5;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    
+    .message-container {
+      margin: 0 auto;
+      width: 50%;
+      text-align: center;
+    }
+    
+    .message {
+      margin-bottom: 10px;
+      background-color: #363636;
+      padding: 10px;
+      border-left: 3px solid #4287f5;
+    }
+    
+    .timestamp, .ip {
+      font-size: 12px;
+      color: #999999;
     }
   </style>
 </head>
 <body>
-  <h1>Quick Links</h1>
+  <h1>ToolBox</h1>
   
-  <div class="container">
-    <div class="section">
-      <h2 class="section-title">Tools</h2>
-      <ul>
-        <li><a class="link" href="https://openai.com/blog/chatgpt">ChatGPT</a></li>
-        <li><a class="link" href="https://www.wikipedia.org/">Wikipedia</a></li>
-      </ul>
-    </div>
-  
-    <div class="section">
-      <h2 class="section-title">Gaming</h2>
-      <ul>
-        <li><a class="link" href="https://pokemonshowdown.com/">Pokémon Showdown</a></li>
-        <li><a class="link" href="https://google2.com">Google 2</a></li>
-      </ul>
-    </div>
-  
-    <div class="section">
-      <h2 class="section-title">Bookmarks</h2>
-      <ul>
-        <li><a class="link" href="https://github.com/">GitHub</a></li>
-        <li><a class="link" href="https://www.apple.com/">Apple</a></li>
-      </ul>
-    </div>
-  
-    <div class="section">
-      <h2 class="section-title">Section 4</h2>
-      <ul>
-        <li><a class="link" href="https://example4.com">Example 4</a></li>
-        <li><a class="link" href="https://example5.com">Example 5</a></li>
-      </ul>
+  <div class="section">
+    <h2>Links</h2>
+    <div class="links">
+      <a href="https://openai.com/blog/chatgpt">ChatGPT</a>
+      <a href="https://www.github.com">GitHub</a>
+      <a href="https://pokemonshowdown.com/">Pokémon Showdown</a>
+      <a href="https://www.wikipedia.org">Wikipedia</a>
+      <a href="https://itch.io/">itch.io</a>
+      <a href="https://www.microcenter.com/">Microcenter</a>
+      <a href="https://www.apple.com/">Apple</a>
     </div>
   </div>
   
+  <div class="section">
+    <h2>Resources</h2>
+    <div class="links">
+      <a href="https://wormhole.app/">Wormhole</a>
+      <a href="https://privnote.com/#">privnote</a>
+      <a href="https://www.wikipedia.org">Wikipedia</a>
+      <a href="https://stackoverflow.com/">Stack Overflow</a>
+      
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="message-box">
+      <h2>Message Box</h2>
+      <textarea id="message" placeholder="Enter your message"></textarea>
+      <button onclick="addMessage()">Submit</button>
+    </div>
+    
+    <div class="message-container">
+      <h2>Last 5 Messages:</h2>
+      <div id="message-display" class="message"></div>
+    </div>
+  </div>
+  
+  <script>
+    var messages = [];
+    var messageInput = document.getElementById("message");
+    var messageDisplay = document.getElementById("message-display");
+    
+    function addMessage() {
+      var message = messageInput.value;
+      var timestamp = new Date().toLocaleString();
+      var ipAddress = getUserIPAddress();
+      messages.unshift({ message: message, timestamp: timestamp, ipAddress: ipAddress });
+      
+      if (messages.length > 5) {
+        messages.pop();
+      }
+      
+      displayMessages();
+      messageInput.value = "";
+    }
+    
+    function displayMessages() {
+      messageDisplay.innerHTML = "";
+      
+      for (var i = 0; i < messages.length; i++) {
+        var messageElement = document.createElement("div");
+        messageElement.classList.add("message");
+        
+        var messageText = document.createElement("p");
+        messageText.textContent = messages[i].message;
+        
+        var timestamp = document.createElement("p");
+        timestamp.textContent = "Timestamp: " + messages[i].timestamp;
+        
+        var ipAddress = document.createElement("p");
+        ipAddress.textContent = "IP Address: " + messages[i].ipAddress;
+        
+        messageElement.appendChild(messageText);
+        messageElement.appendChild(timestamp);
+        messageElement.appendChild(ipAddress);
+        messageDisplay.appendChild(messageElement);
+      }
+    }
+    
+    function getUserIPAddress() {
+      // Example implementation using a dummy IP address
+      return "192.168.0.1";
+    }
+  </script>
 </body>
 </html>
