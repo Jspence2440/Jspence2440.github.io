@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolBox</title>
+    <style>
+        body {
+            background-color: #1f1f1f;
+            color: #d9d9d9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        h1 {
+            color: #90ee90;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .links a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .dark-mode {
+            background-color: #1f1f1f;
+        }
+
+        .dark-mode h1,
+        .dark-mode h2 {
+            color: #cccccc;
+        }
+
+        .dark-mode .links a {
+            background-color: #4169e1;
+        }
+
+        .dark-mode .counter-box {
+            background-color: #363636;
+            color: #cccccc;
+            border-radius: 10px;
+            padding: 20px;
+            transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+        }
+
+        .dark-mode .counter-buttons button {
+            background-color: #20b2aa;
+        }
+
+        .light-mode {
+            background-color: #f1f1f1;
+        }
+
+        .light-mode h1,
+        .light-mode h2 {
+            color: #000000;
+        }
+
+        .light-mode .links a {
+            background-color: #228b22;
+        }
+
+        .light-mode .counter-box {
+            background-color: #c0c0c0;
+            color: #000000;
+            border: 1px solid #c0c0c0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+        }
+
+        .light-mode .counter-buttons button {
+            background-color: #2a52be;
+        }
+
+        .mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .mode-toggle button {
+            background-color: #a50b5e;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .mode-toggle button:hover {
+            background-color: #910a52;
+        }
+
+        .counter-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+            border-radius: 10px;
+            transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+            flex: 1;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .counter-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .counter {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .counter-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .counter-buttons button {
+            background-color: #ff4f00;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .counter-buttons button:hover {
+            background-color: #d43f00;
+        }
+
+        .tool-sections {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .counter-section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <div class="mode-toggle">
+        <button onclick="toggleMode()">
+            <span id="mode-label">Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>ToolBox</h1>
+
+    <div class="section">
+        <h2>Bookmarks</h2>
+        <div class="links">
+            <a href="https://openai.com/blog/chatgpt">ChatGPT</a>
+            <a href="https://www.github.com">GitHub</a>
+            <a href="https://stackoverflow.com/">Stack Overflow</a>
+            <a href="https://www.wikipedia.org">Wikipedia</a>
+            <a href="https://www.microcenter.com/">Microcenter</a>
+            <a href="https://www.apple.com/">Apple</a>
+            <a href="https://itch.io/">itch.io</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Tools</h2>
+        <div class="links">
+            <a href="https://wormhole.app/">Wormhole</a>
+            <a href="https://privnote.com/#">privnote</a>
+            <a href="https://fast.com/">Fast.com</a>
+            <a href="https://www.random.org/">Random.org</a>
+            <a href="https://www.manualslib.com/">ManualsLib</a>
+            <a href="https://freetinytools.com/">Free Tiny Tools</a>
+        </div>
+    </div>
+
+    <div class="tool-sections">
+        <div class="counter-section">
+            <div class="counter-box">
+                <h2>Tally Counter</h2>
+                <div class="counter">0</div>
+                <div class="counter-buttons">
+                    <button onclick="incrementCounter(1)">+1</button>
+                    <button onclick="incrementCounter(5)">+5</button>
+                    <button onclick="incrementCounter(10)">+10</button>
+                    <button onclick="incrementCounter(50)">+50</button>
+                    <button onclick="incrementCounter(100)">+100</button>
+                    <button onclick="incrementCounter(500)">+500</button>
+                    <button onclick="incrementCounter(1000)">+1000</button>
+                </div>
+                <div class="counter-buttons-row">
+                    <div class="counter-buttons">
+                        <button onclick="decrementCounter(1)">-1</button>
+                        <button onclick="decrementCounter(5)">-5</button>
+                        <button onclick="decrementCounter(10)">-10</button>
+                        <button onclick="decrementCounter(50)">-50</button>
+                        <button onclick="decrementCounter(100)">-100</button>
+                        <button onclick="decrementCounter(500)">-500</button>
+                        <button onclick="decrementCounter(1000)">-1000</button>
+                    </div>
+                </div>
+                <button class="reset-button" onclick="resetCounter()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var modeButton = document.querySelector('.mode-toggle button');
+        var modeLabel = document.getElementById('mode-label');
+        var body = document.body;
+        var counterDisplay = document.querySelector('.counter');
+        var counter = 0;
+
+        function toggleMode() {
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                modeLabel.textContent = 'Light Mode';
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                modeLabel.textContent = 'Dark Mode';
+            }
+
+            var tallyCounterSection = document.querySelector('.counter-section');
+            tallyCounterSection.classList.toggle('dark-mode');
+            tallyCounterSection.classList.toggle('light-mode');
+        }
+
+        function incrementCounter(value) {
+            counter += value;
+            counterDisplay.textContent = counter;
+        }
+
+        function decrementCounter(value) {
+            counter -= value;
+            counterDisplay.textContent = counter;
+        }
+
+        function resetCounter() {
+            counter = 0;
+            counterDisplay.textContent = counter;
+        }
+    </script>
+</body>
+
+</html>
